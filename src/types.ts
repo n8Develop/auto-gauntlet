@@ -20,6 +20,12 @@ export interface Entity {
   alive: boolean
 }
 
+export interface DamageNumber {
+  pos: Vec2
+  text: string
+  age: number  // ms elapsed since creation
+}
+
 export interface GameState {
   entities: Entity[]
   wave: number
@@ -27,6 +33,9 @@ export interface GameState {
   status: 'playing' | 'wave_transition' | 'game_over'
   arena: { width: number; height: number }
   transitionTimer: number
+  damageNumbers: DamageNumber[]
+  waveAnnouncement: { text: string; remaining: number } | null
+  cameraShake: { remaining: number } | null
 }
 
 export interface WaveConfig {
